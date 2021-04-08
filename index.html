@@ -1,0 +1,47 @@
+<!-- TODO TODAY
+REPO: vue-todolist
+GOAL: replicare le funzioni della todo-list viste a lezione con le seguenti caratteristiche
+- stampare in pagina un item per ogni elemento contenuto in un array
+- ogni item ha una "x" associata: cliccando su di essa, l'item viene rimosso dalla lista
+- predisporre un input per aggiungere un nuovo item alla lista: digitando il tasto invio oppure ciccando su un pulsante,
+il testo digitato viene aggiunto alla lista -->
+
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>ex 8/04/21</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="logo">
+                <img src="https://www.boolean.careers/images/misc/logo.png" alt="">
+            </div>
+        </div>
+        <div class="newTodo">
+            <input v-model="newTodo" @keyup.enter="createNewTodo" class="todo" type="text" placeholder="Nuovo todo">
+            <button @click="createNewTodo">Aggiungi</button>
+        </div>
+        <div class="todos-container">
+            <ul v-if="todos.length > 0">
+                <li v-for="(todo, index) in todos" class="todo">
+                    {{ todo }}
+                    <i @click="clickDeleteTodo(index)" class="cursor-pointer fas fa-times"></i>
+                </li>
+            </ul>
+            <h2 v-else>Inserisci una task</h2>
+        </div>
+    </div>
+</body>
+
+</html>
